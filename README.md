@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مستشفى الحياة - الرعاية الصحية المتكاملة</title>
+    <style>
+        /* CSS Reset وإعدادات عامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #2c7fb8;
+            --secondary-color: #7fcdbb;
+            --accent-color: #edf8b1;
+            --dark-color: #253237;
+            --light-color: #f8f9fa;
+            --success-color: #28a745;
+            --danger-color: #dc3545;
+            --warning-color: #ffc107;
+            --text-color: #333;
+            --text-light: #6c757d;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: var(--transition);
+        }
+
+        body[dir="ltr"] {
+            text-align: left;
+        }
+
+        body[dir="rtl"] {
+            text-align: right;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* التصميم المتجاوب */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+        }
+
+        /* الشريط العلوي */
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin: 0 10px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 8px 12px;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 5px 10px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+            margin: 0 5px;
+        }
+
+        .lang-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* القسم الرئيسي - تم التحديث هنا */
+        .hero {
+            background: linear-gradient(rgba(44, 127, 184, 0.85), rgba(44, 127, 184, 0.9)), url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin: 0 auto 35px;
+            line-height: 1.8;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            padding: 14px 35px;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* قسم الخدمات */
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .section-title p {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            margin-bottom: 15px;
+            color: var(--dark-color);
+        }
+
+        /* قسم الحجوزات */
+        .booking {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+
+        .booking-form {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(44, 127, 184, 0.2);
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px;
+        }
+
+        .form-col {
+            flex: 1;
+            padding: 0 10px;
+            min-width: 250px;
+        }
+
+        /* قسم الشكاوى */
+        .complaints {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .complaint-form {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            box-shadow: var(--box-shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* قسم الأسئلة الشائعة */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: 15px;
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .faq-question:hover {
+            background-color: #f8f9fa;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-answer.active {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .faq-toggle {
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+
+        /* قسم الأطباء */
+        .doctors {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .doctors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .doctor-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .doctor-img {
+            height: 250px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .doctor-info {
+            padding: 20px;
+        }
+
+        .doctor-info h3 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        .doctor-specialty {
+            color: var(--primary-color);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        /* قسم الاتصال */
+        .contact {
+            padding: 80px 0;
+            background-color: var(--light-color);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .contact-info {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin: 0 15px 0 0;
+        }
+
+        body[dir="ltr"] .contact-icon {
+            margin: 0 0 0 15px;
+        }
+
+        .contact-details h3 {
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        /* التذييل */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: #ddd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: block;
+            }
+
+            nav {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                box-shadow: var(--box-shadow);
+                display: none;
+            }
+
+            nav.active {
+                display: block;
+            }
+
+            nav ul {
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .form-col {
+                flex: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body dir="rtl">
+    <!-- الشريط العلوي -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="https://via.placeholder.com/50" alt="شعار المستشفى">
+                <h1>مستشفى الحياة</h1>
+            </div>
+            
+            <button class="nav-toggle" id="navToggle">
+                ☰
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">الرئيسية</a></li>
+                    <li><a href="#services">الخدمات</a></li>
+                    <li><a href="#doctors">الأطباء</a></li>
+                    <li><a href="#booking">الحجوزات</a></li>
+                    <li><a href="#complaints">الشكاوى</a></li>
+                    <li><a href="#faq">الأسئلة الشائعة</a></li>
+                    <li><a href="#contact">اتصل بنا</a></li>
+                </ul>
+            </nav>
+            
+            <div class="lang-switcher">
+                <button class="lang-btn" id="arBtn">العربية</button>
+                <button class="lang-btn" id="enBtn">English</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- القسم الرئيسي - تم التحديث هنا -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h2>الرعاية الصحية المتكاملة</h2>
+            <p>نقدم أفضل الخدمات الطبية بأعلى معايير الجودة والكفاءة، مع فريق طبي متخصص ومرافق حديثة لتلبية جميع احتياجاتكم الصحية.</p>
+            <a href="#booking" class="btn btn-primary">احجز موعد الآن</a>
+        </div>
+    </section>
+
+    <!-- قسم الخدمات -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>خدماتنا الطبية</h2>
+                <p>نوفر مجموعة واسعة من الخدمات الطبية المتخصصة لتلبية جميع احتياجاتكم الصحية</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">❤️</div>
+                    <h3>طب القلب</h3>
+                    <p>تشخيص وعلاج أمراض القلب والأوعية الدموية بأحدث التقنيات</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🧠</div>
+                    <h3>طب الأعصاب</h3>
+                    <p>رعاية متخصصة للجهاز العصبي والدماغ بكوادر طبية متميزة</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🦴</div>
+                    <h3>جراحة العظام</h3>
+                    <p>علاج إصابات ومشاكل الجهاز العضلي الهيكلي بأحدث الأساليب</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">👶</div>
+                    <h3>طب الأطفال</h3>
+                    <p>رعاية صحية شاملة للأطفال من الولادة حتى سن المراهقة</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">👁️</div>
+                    <h3>طب العيون</h3>
+                    <p>تشخيص وعلاج أمراض العيون وإجراء جراحات تصحيح النظر</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>طب الأسنان</h3>
+                    <p>خدمات طب الأسنان الشاملة من الوقاية إلى العلاج المتقدم</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأطباء -->
+    <section class="doctors" id="doctors">
+        <div class="container">
+            <div class="section-title">
+                <h2>فريقنا الطبي</h2>
+                <p>تعرف على فريقنا من الأطباء المتخصصين ذوي الخبرة والكفاءة العالية</p>
+            </div>
+            
+            <div class="doctors-grid">
+                <div class="doctor-card">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="doctor-info">
+                        <h3>د. أحمد محمد</h3>
+                        <p class="doctor-specialty">استشاري أمراض القلب</p>
+                        <p>خبرة أكثر من 15 عاماً في تشخيص وعلاج أمراض القلب</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1559839734-2b71ea197ec2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="doctor-info">
+                        <h3>د. سارة الخالد</h3>
+                        <p class="doctor-specialty">استشارية طب الأطفال</p>
+                        <p>متخصصة في رعاية حديثي الولادة والأمراض الوراثية</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1622253692010-333f2da6031d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="doctor-info">
+                        <h3>د. خالد عبدالله</h3>
+                        <p class="doctor-specialty">استشاري جراحة العظام</p>
+                        <p>خبير في جراحات المفاصل والكسور المعقدة</p>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <div class="doctor-img" style="background-image: url('https://images.unsplash.com/photo-1594824947933-d0501ba2fe65?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80');"></div>
+                    <div class="doctor-info">
+                        <h3>د. فاطمة العلي</h3>
+                        <p class="doctor-specialty">استشارية طب العيون</p>
+                        <p>متخصصة في جراحات الشبكية وتصحيح النظر بالليزر</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الحجوزات -->
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="section-title">
+                <h2>حجز موعد</h2>
+                <p>يمكنك حجز موعد بسهولة من خلال تعبئة النموذج التالي</p>
+            </div>
+            
+            <div class="booking-form">
+                <form id="bookingForm">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="patientName">الاسم الكامل</label>
+                                <input type="text" id="patientName" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="patientPhone">رقم الهاتف</label>
+                                <input type="tel" id="patientPhone" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="patientEmail">البريد الإلكتروني</label>
+                                <input type="email" id="patientEmail" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="appointmentDate">تاريخ الموعد</label>
+                                <input type="date" id="appointmentDate" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="department">القسم الطبي</label>
+                                <select id="department" class="form-control" required>
+                                    <option value="">اختر القسم</option>
+                                    <option value="cardiology">طب القلب</option>
+                                    <option value="neurology">طب الأعصاب</option>
+                                    <option value="orthopedics">جراحة العظام</option>
+                                    <option value="pediatrics">طب الأطفال</option>
+                                    <option value="ophthalmology">طب العيون</option>
+                                    <option value="dentistry">طب الأسنان</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="doctor">الطبيب</label>
+                                <select id="doctor" class="form-control" required>
+                                    <option value="">اختر الطبيب</option>
+                                    <option value="dr_ahmed">د. أحمد محمد</option>
+                                    <option value="dr_sara">د. سارة الخالد</option>
+                                    <option value="dr_khaled">د. خالد عبدالله</option>
+                                    <option value="dr_fatima">د. فاطمة العلي</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">ملاحظات إضافية</label>
+                        <textarea id="notes" class="form-control"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">تأكيد الحجز</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الشكاوى -->
+    <section class="complaints" id="complaints">
+        <div class="container">
+            <div class="section-title">
+                <h2>تقديم شكوى أو اقتراح</h2>
+                <p>نسعى دائماً لتحسين خدماتنا، ونقدر ملاحظاتكم واقتراحاتكم</p>
+            </div>
+            
+            <div class="complaint-form">
+                <form id="complaintForm">
+                    <div class="form-row">
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="complainantName">الاسم</label>
+                                <input type="text" id="complainantName" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-col">
+                            <div class="form-group">
+                                <label for="complainantContact">وسيلة الاتصال</label>
+                                <input type="text" id="complainantContact" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="complaintType">نوع الشكوى/الاقتراح</label>
+                        <select id="complaintType" class="form-control" required>
+                            <option value="">اختر النوع</option>
+                            <option value="complaint">شكوى</option>
+                            <option value="suggestion">اقتراح</option>
+                            <option value="compliment">شكر وتقدير</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="complaintDetails">تفاصيل الشكوى/الاقتراح</label>
+                        <textarea id="complaintDetails" class="form-control" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn">إرسال</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الأسئلة الشائعة -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>الأسئلة الشائعة</h2>
+                <p>إجابات على الأسئلة الأكثر شيوعاً من قبل مراجعي المستشفى</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هي أوقات زيارة المرضى؟</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>أوقات زيارة المرضى هي من الساعة 4:00 عصراً حتى الساعة 8:00 مساءً. وننصح بعدم إحضار الأطفال تحت سن 12 سنة لزيارة المرضى حفاظاً على سلامتهم.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>كيف يمكنني الاستعلام عن فاتورتي؟</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>يمكنك الاستعلام عن فاتورتك من خلال قسم المحاسبة في الطابق الأرضي، أو عبر الاتصال على الرقم 0123456789 خلال أوقات العمل الرسمية.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل توجد مواقف سيارات للمراجعين؟</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، يتوفر موقف سيارات مجاني للمراجعين بسعة 300 سيارة، مع وجود مواقف مخصصة لذوي الاحتياجات الخاصة قرب المدخل الرئيسي.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>ما هي وثائق التأمين المطلوبة؟</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>يجب إحضار بطاقة التأمين الصحي سارية المفعول وبطاقة الهوية الوطنية. لمرضى التأمينات التجارية، يرجى إحضار خطاب التغطية من شركة التأمين.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>هل يمكنني إلغاء أو تعديل موعدي؟</span>
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>نعم، يمكنك إلغاء أو تعديل موعدك قبل 24 ساعة على الأقل من الموعد المحدد، عبر الاتصال على مركز الحجوزات أو من خلال تطبيق المستشفى.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم الاتصال -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>اتصل بنا</h2>
+                <p>نحن هنا لمساعدتك، لا تتردد في التواصل معنا</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>معلومات الاتصال</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>العنوان</h4>
+                            <p>شارع المستشفى، الحي الطبي، الرياض، المملكة العربية السعودية</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>هاتف</h4>
+                            <p>+966 11 123 4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>البريد الإلكتروني</h4>
+                            <p>info@alhayathospital.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div class="contact-details">
+                            <h4>أوقات العمل</h4>
+                            <p>الأحد - الخميس: 8:00 صباحاً - 10:00 مساءً<br>الجمعة: 4:00 مساءً - 10:00 مساءً</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-info">
+                    <h3>الطوارئ</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🚑</div>
+                        <div class="contact-details">
+                            <h4>رقم الطوارئ</h4>
+                            <p>+966 11 987 6543</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">🆘</div>
+                        <div class="contact-details">
+                            <h4>خدمة الإسعاف</h4>
+                            <p>متوفرة على مدار 24 ساعة، 7 أيام في الأسبوع</p>
+                        </div>
+                    </div>
+                    
+                    <h3 style="margin-top: 30px;">وسائل التواصل الاجتماعي</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h4>تابعنا</h4>
+                            <p>تابع آخر أخبارنا ونصائحنا الصحية على منصات التواصل الاجتماعي</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>مستشفى الحياة</h3>
+                    <p>نحن نقدم رعاية صحية شاملة ومتكاملة بمعايير عالمية، مع التركيز على راحة المريض ورفاهيته.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>روابط سريعة</h3>
+                    <ul>
+                        <li><a href="#home">الرئيسية</a></li>
+                        <li><a href="#services">الخدمات</a></li>
+                        <li><a href="#doctors">الأطباء</a></li>
+                        <li><a href="#booking">الحجوزات</a></li>
+                        <li><a href="#faq">الأسئلة الشائعة</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>الخدمات</h3>
+                    <ul>
+                        <li><a href="#">طب القلب</a></li>
+                        <li><a href="#">طب الأعصاب</a></li>
+                        <li><a href="#">جراحة العظام</a></li>
+                        <li><a href="#">طب الأطفال</a></li>
+                        <li><a href="#">طب العيون</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>اتصل بنا</h3>
+                    <ul>
+                        <li>📍 شارع المستشفى، الرياض</li>
+                        <li>📞 +966 11 123 4567</li>
+                        <li>📧 info@alhayathospital.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023 مستشفى الحياة. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // JavaScript للوظائف التفاعلية
+        document.addEventListener('DOMContentLoaded', function() {
+            // تبديل القائمة على الأجهزة المحمولة
+            const navToggle = document.getElementById('navToggle');
+            const mainNav = document.getElementById('mainNav');
+            
+            navToggle.addEventListener('click', function() {
+                mainNav.classList.toggle('active');
+            });
+            
+            // تبديل اللغة
+            const arBtn = document.getElementById('arBtn');
+            const enBtn = document.getElementById('enBtn');
+            const htmlElement = document.documentElement;
+            
+            arBtn.addEventListener('click', function() {
+                htmlElement.lang = 'ar';
+                htmlElement.dir = 'rtl';
+                updateLanguage('ar');
+            });
+            
+            enBtn.addEventListener('click', function() {
+                htmlElement.lang = 'en';
+                htmlElement.dir = 'ltr';
+                updateLanguage('en');
+            });
+            
+            // وظيفة لتحديث النصوص بناءً على اللغة
+            function updateLanguage(lang) {
+                // في تطبيق حقيقي، هنا سيتم تحميل النصوص من ملفات الترجمة
+                // لكن في هذا المثال، سنقوم بتغيير بعض النصوص يدوياً للتوضيح
+                
+                if (lang === 'en') {
+                    document.querySelector('.logo h1').textContent = 'Al-Hayat Hospital';
+                    document.querySelector('.hero h2').textContent = 'Comprehensive Healthcare';
+                    document.querySelector('.hero p').textContent = 'We provide the best medical services with the highest standards of quality and efficiency, with a specialized medical team and modern facilities to meet all your health needs.';
+                    document.querySelector('.hero .btn').textContent = 'Book an Appointment Now';
+                    
+                    // تحديث عناصر القائمة
+                    const navItems = document.querySelectorAll('#mainNav a');
+                    navItems[0].textContent = 'Home';
+                    navItems[1].textContent = 'Services';
+                    navItems[2].textContent = 'Doctors';
+                    navItems[3].textContent = 'Appointments';
+                    navItems[4].textContent = 'Complaints';
+                    navItems[5].textContent = 'FAQ';
+                    navItems[6].textContent = 'Contact Us';
+                    
+                    // تحديث عناوين الأقسام
+                    document.querySelector('#services .section-title h2').textContent = 'Our Medical Services';
+                    document.querySelector('#services .section-title p').textContent = 'We provide a wide range of specialized medical services to meet all your health needs';
+                    
+                    document.querySelector('#doctors .section-title h2').textContent = 'Our Medical Team';
+                    document.querySelector('#doctors .section-title p').textContent = 'Meet our team of specialized doctors with high experience and competence';
+                    
+                    document.querySelector('#booking .section-title h2').textContent = 'Book an Appointment';
+                    document.querySelector('#booking .section-title p').textContent = 'You can easily book an appointment by filling out the form below';
+                    
+                    document.querySelector('#complaints .section-title h2').textContent = 'Submit a Complaint or Suggestion';
+                    document.querySelector('#complaints .section-title p').textContent = 'We always strive to improve our services and appreciate your feedback and suggestions';
+                    
+                    document.querySelector('#faq .section-title h2').textContent = 'Frequently Asked Questions';
+                    document.querySelector('#faq .section-title p').textContent = 'Answers to the most common questions from hospital visitors';
+                    
+                    document.querySelector('#contact .section-title h2').textContent = 'Contact Us';
+                    document.querySelector('#contact .section-title p').textContent = 'We are here to help you, do not hesitate to contact us';
+                    
+                    // تحديث النصوص في التذييل
+                    document.querySelector('footer .footer-col h3').textContent = 'Al-Hayat Hospital';
+                    document.querySelector('footer .footer-col:nth-child(2) h3').textContent = 'Quick Links';
+                    document.querySelector('footer .footer-col:nth-child(3) h3').textContent = 'Services';
+                    document.querySelector('footer .footer-col:nth-child(4) h3').textContent = 'Contact Us';
+                    document.querySelector('.copyright p').textContent = '© 2023 Al-Hayat Hospital. All rights reserved.';
+                    
+                } else {
+                    // إعادة النصوص إلى العربية
+                    document.querySelector('.logo h1').textContent = 'مستشفى الحياة';
+                    document.querySelector('.hero h2').textContent = 'الرعاية الصحية المتكاملة';
+                    document.querySelector('.hero p').textContent = 'نقدم أفضل الخدمات الطبية بأعلى معايير الجودة والكفاءة، مع فريق طبي متخصص ومرافق حديثة لتلبية جميع احتياجاتكم الصحية.';
+                    document.querySelector('.hero .btn').textContent = 'احجز موعد الآن';
+                    
+                    // تحديث عناصر القائمة
+                    const navItems = document.querySelectorAll('#mainNav a');
+                    navItems[0].textContent = 'الرئيسية';
+                    navItems[1].textContent = 'الخدمات';
+                    navItems[2].textContent = 'الأطباء';
+                    navItems[3].textContent = 'الحجوزات';
+                    navItems[4].textContent = 'الشكاوى';
+                    navItems[5].textContent = 'الأسئلة الشائعة';
+                    navItems[6].textContent = 'اتصل بنا';
+                    
+                    // تحديث عناوين الأقسام
+                    document.querySelector('#services .section-title h2').textContent = 'خدماتنا الطبية';
+                    document.querySelector('#services .section-title p').textContent = 'نوفر مجموعة واسعة من الخدمات الطبية المتخصصة لتلبية جميع احتياجاتكم الصحية';
+                    
+                    document.querySelector('#doctors .section-title h2').textContent = 'فريقنا الطبي';
+                    document.querySelector('#doctors .section-title p').textContent = 'تعرف على فريقنا من الأطباء المتخصصين ذوي الخبرة والكفاءة العالية';
+                    
+                    document.querySelector('#booking .section-title h2').textContent = 'حجز موعد';
+                    document.querySelector('#booking .section-title p').textContent = 'يمكنك حجز موعد بسهولة من خلال تعبئة النموذج التالي';
+                    
+                    document.querySelector('#complaints .section-title h2').textContent = 'تقديم شكوى أو اقتراح';
+                    document.querySelector('#complaints .section-title p').textContent = 'نسعى دائماً لتحسين خدماتنا، ونقدر ملاحظاتكم واقتراحاتكم';
+                    
+                    document.querySelector('#faq .section-title h2').textContent = 'الأسئلة الشائعة';
+                    document.querySelector('#faq .section-title p').textContent = 'إجابات على الأسئلة الأكثر شيوعاً من قبل مراجعي المستشفى';
+                    
+                    document.querySelector('#contact .section-title h2').textContent = 'اتصل بنا';
+                    document.querySelector('#contact .section-title p').textContent = 'نحن هنا لمساعدتك، لا تتردد في التواصل معنا';
+                    
+                    // تحديث النصوص في التذييل
+                    document.querySelector('footer .footer-col h3').textContent = 'مستشفى الحياة';
+                    document.querySelector('footer .footer-col:nth-child(2) h3').textContent = 'روابط سريعة';
+                    document.querySelector('footer .footer-col:nth-child(3) h3').textContent = 'الخدمات';
+                    document.querySelector('footer .footer-col:nth-child(4) h3').textContent = 'اتصل بنا';
+                    document.querySelector('.copyright p').textContent = '© 2023 مستشفى الحياة. جميع الحقوق محفوظة.';
+                }
+            }
+            
+            // تفعيل/إلغاء تفعيل الأسئلة الشائعة
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const toggle = this.querySelector('.faq-toggle');
+                    
+                    answer.classList.toggle('active');
+                    toggle.classList.toggle('active');
+                });
+            });
+            
+            // معالجة نموذج الحجز
+            const bookingForm = document.getElementById('bookingForm');
+            
+            bookingForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // في تطبيق حقيقي، هنا سيتم إرسال البيانات إلى الخادم
+                alert('تم استلام طلب الحجز بنجاح، سنتواصل معك قريباً لتأكيد الموعد.');
+                bookingForm.reset();
+            });
+            
+            // معالجة نموذج الشكاوى
+            const complaintForm = document.getElementById('complaintForm');
+            
+            complaintForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // في تطبيق حقيقي، هنا سيتم إرسال البيانات إلى الخادم
+                alert('شكراً لك على ملاحظاتك، سنقوم بدراستها والرد عليك في أقرب وقت ممكن.');
+                complaintForm.reset();
+            });
+            
+            // إغلاق القائمة عند النقر على رابط (للهواتف المحمولة)
+            const navLinks = document.querySelectorAll('#mainNav a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        mainNav.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
